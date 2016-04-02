@@ -1,0 +1,341 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://${app.id}.appspot.com/_ah/api",
+  "name" : "admin",
+  "version" : "v1",
+  "description" : "API used by admin users to manage campaigns and check current statistics. HTTP Basic authentication is required to invoke API calls.",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://${app.id}.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "admin.campaign.delete" : {
+      "path" : "campaign/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "admin.campaign.list" : {
+      "path" : "campaign",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.listCampaigns",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "platform" : {
+            "enum" : {
+              "ANDROID" : {
+              },
+              "IPHONE" : {
+              },
+              "WINDOWSPHONE" : {
+              }
+            },
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "admin.campaignPlatformClicks.get" : {
+      "path" : "clicks/campaign/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForCampaignOnPlatform",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          },
+          "platform" : {
+            "enum" : {
+              "ANDROID" : {
+              },
+              "IPHONE" : {
+              },
+              "WINDOWSPHONE" : {
+              }
+            },
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "admin.platformClicks.get" : {
+      "path" : "clicks/{platform}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForPlatform",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "platform" : {
+            "enum" : {
+              "ANDROID" : {
+              },
+              "IPHONE" : {
+              },
+              "WINDOWSPHONE" : {
+              }
+            },
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "admin.campaign.update" : {
+      "path" : "campaign/{id}",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.updateCampaing",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "admin.campaign.get" : {
+      "path" : "campaign/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getCampaign",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "admin.campaign.new" : {
+      "path" : "campaign",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.newCampaign",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Campaign" : {
+        "id" : "Campaign",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "trackingLink" : {
+            "type" : "string"
+          },
+          "creationDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "updateDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "enabledPlatforms" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Platform"
+            }
+          }
+        }
+      },
+      "Platform" : {
+        "id" : "Platform",
+        "type" : "string",
+        "enum" : [ "ANDROID", "IPHONE", "WINDOWSPHONE" ]
+      },
+      "CampaignCollection" : {
+        "id" : "CampaignCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Campaign"
+            }
+          }
+        }
+      },
+      "JsonMap" : {
+        "id" : "JsonMap",
+        "type" : "object"
+      },
+      "CampaignApiDO" : {
+        "id" : "CampaignApiDO",
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "enabledPlatforms" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Platform"
+            }
+          },
+          "trackingLink" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign" : {
+      },
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.listCampaigns" : {
+        "response" : {
+          "$ref" : "CampaignCollection"
+        }
+      },
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForCampaignOnPlatform" : {
+        "response" : {
+          "$ref" : "JsonMap"
+        }
+      },
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForPlatform" : {
+        "response" : {
+          "$ref" : "JsonMap"
+        }
+      },
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.updateCampaing" : {
+        "request" : {
+          "$ref" : "CampaignApiDO"
+        }
+      },
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getCampaign" : {
+        "response" : {
+          "$ref" : "Campaign"
+        }
+      },
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.newCampaign" : {
+        "request" : {
+          "$ref" : "CampaignApiDO"
+        },
+        "response" : {
+          "$ref" : "JsonMap"
+        }
+      }
+    }
+  }
+}

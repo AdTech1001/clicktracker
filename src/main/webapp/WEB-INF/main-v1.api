@@ -1,0 +1,78 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://${app.id}.appspot.com/_ah/api",
+  "name" : "main",
+  "version" : "v1",
+  "description" : "Main API through which mobile clients interact with the backend application.",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://${app.id}.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "main.click.post" : {
+      "path" : "campaign/{campaignId}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerApi.sendClick",
+      "request" : {
+        "parameters" : {
+          "campaignId" : {
+            "type" : "int64",
+            "required" : true
+          },
+          "platform" : {
+            "enum" : {
+              "ANDROID" : {
+              },
+              "IPHONE" : {
+              },
+              "WINDOWSPHONE" : {
+              }
+            },
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "JsonMap" : {
+        "id" : "JsonMap",
+        "type" : "object"
+      }
+    },
+    "methods" : {
+      "com.outfit7.mb.clicktracker.api.ClickTrackerApi.sendClick" : {
+        "response" : {
+          "$ref" : "JsonMap"
+        }
+      }
+    }
+  }
+}
