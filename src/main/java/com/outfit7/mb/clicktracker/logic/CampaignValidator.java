@@ -21,7 +21,7 @@ public class CampaignValidator {
 			throw new IllegalArgumentException("No campaign name provided.");
 		
 		if (!isUrlValid(trackingLink))
-			throw new IllegalArgumentException("Invalid URL.");
+			throw new IllegalArgumentException("Invalid campaign URL.");
 		
 		if (enabledPlatforms == null || enabledPlatforms.length < minPlatforms)
 			throw new IllegalArgumentException("At least "+minPlatforms+" tracking link(s) "+
