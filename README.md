@@ -11,11 +11,11 @@ A working demo project is deployed on GAE. API explorer is available on https://
 When invoking calls always use **Execute without oath**. Use the *apiKey* property to authenticate. apiKey: dog2dog 
   
 ## Deploying to App Engine
-Edit *pom.xml* and configure the <pre>app.id</pre> property. From project root run:
+Edit *pom.xml* and configure the `app.id` property. From project root run:
 ```
 mvn appengine:update
 ```
-Test the deployment with the API explorer: <pre>https://<your-google-app-id>.appspot.com/_ah/api/explorer</pre>
+Test the deployment with the API explorer: `https://<your-google-app-id>.appspot.com/_ah/api/explorer`
 
 ## Local development environment
 Prerequisites:
