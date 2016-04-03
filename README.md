@@ -1,5 +1,5 @@
 # Click Tracker Application
-Click Tracker API is an application for tracking mobile client clicks for various campaigns. It is a Google App Engine project based on Google Cloud Endpoints. 
+Click Tracker API is an application for tracking mobile client clicks for various campaigns. It is a Google App Engine project based on Google Cloud Endpoints.
 
 There are two API endpoints:
   - Admin API: used by admins for campaign management and click analytics,
@@ -26,5 +26,8 @@ Prerequisites:
   - Import project. For source select *Maven->Existing Maven projects*
   - To run the project from Eclipse use *Run as->Maven build*
   - Access the API locally: https://localhost:8080/_ah/api/explorer
+- *Maven* commands:
+  - Build: mvn package
+  - Run development server: `appengine:devserver`
 
 Unit tests are included in the main project in src/test.
