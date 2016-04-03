@@ -1,5 +1,6 @@
 target/
 test/
+eclipse-launch-profiles/
 
 *.class
 
