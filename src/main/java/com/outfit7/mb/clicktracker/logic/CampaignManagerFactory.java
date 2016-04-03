@@ -13,9 +13,7 @@ public class CampaignManagerFactory {
 	static public CampaignManager GetProductionCampaignManager() {
 		CampaignDAO campaignDAO = new CampaignDAO();
 		ClickDAO clickDAO = new ClickDAO();
-		ClickTrackerProperties properties = new ClickTrackerProperties();
-		
-		return new CampaignManager(properties.getDefaultTrackingLink(), campaignDAO, clickDAO);
+		return new CampaignManager(ClickTrackerProperties.getDefaultTrackingLink(), campaignDAO, clickDAO);
 	}
 
 	/**
