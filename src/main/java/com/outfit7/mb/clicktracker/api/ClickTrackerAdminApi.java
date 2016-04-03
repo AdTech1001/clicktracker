@@ -152,7 +152,7 @@ public class ClickTrackerAdminApi {
 		}
 	}
 	
-	@ApiMethod(path = "clicks/campaign/{id}", name = "campaignPlatformClicks.get", httpMethod = HttpMethod.GET)
+	@ApiMethod(path = "clicks/campaign/{id}/platform/{platform}", name = "campaignPlatformClicks.get", httpMethod = HttpMethod.GET)
 	public Properties getNumberOfClicksForCampaignOnPlatform(
 			HttpServletRequest request,
 			@Named("apiKey") String apiKey,
@@ -173,7 +173,7 @@ public class ClickTrackerAdminApi {
 		}
 	}
 	
-	@ApiMethod(path = "clicks/{platform}", name = "platformClicks.get", httpMethod = HttpMethod.GET)
+	@ApiMethod(path = "clicks/platform/{platform}", name = "platformClicks.get", httpMethod = HttpMethod.GET)
 	public Properties getNumberOfClicksForPlatform(
 			HttpServletRequest request,
 			@Named("apiKey") String apiKey,

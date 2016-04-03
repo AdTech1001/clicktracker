@@ -1,5 +1,8 @@
 package com.outfit7.mb.clicktracker.models;
 
+/**
+ * Campaign object used for REST API input. 
+ */
 public class CampaignApiDO {
 	private String name;
 	private Platform[] enabledPlatforms;

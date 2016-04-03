@@ -26,31 +26,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "admin.campaign.delete" : {
-      "path" : "campaign/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign",
-      "request" : {
-        "parameters" : {
-          "apiKey" : {
-            "type" : "string",
-            "required" : true
-          },
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
     "admin.campaign.list" : {
       "path" : "campaign",
       "httpMethod" : "GET",
@@ -85,7 +60,7 @@
       }
     },
     "admin.campaignPlatformClicks.get" : {
-      "path" : "clicks/campaign/{id}",
+      "path" : "clicks/campaign/{id}/platform/{platform}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -121,30 +96,22 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "admin.platformClicks.get" : {
-      "path" : "clicks/{platform}",
+    "admin.campaign.get" : {
+      "path" : "campaign/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForPlatform",
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getCampaign",
       "request" : {
         "parameters" : {
           "apiKey" : {
             "type" : "string",
             "required" : true
           },
-          "platform" : {
-            "enum" : {
-              "ANDROID" : {
-              },
-              "IPHONE" : {
-              },
-              "WINDOWSPHONE" : {
-              }
-            },
-            "type" : "string",
+          "id" : {
+            "type" : "int64",
             "required" : true
           }
         },
@@ -180,22 +147,30 @@
         "body" : "empty"
       }
     },
-    "admin.campaign.get" : {
-      "path" : "campaign/{id}",
+    "admin.platformClicks.get" : {
+      "path" : "clicks/platform/{platform}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getCampaign",
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForPlatform",
       "request" : {
         "parameters" : {
           "apiKey" : {
             "type" : "string",
             "required" : true
           },
-          "id" : {
-            "type" : "int64",
+          "platform" : {
+            "enum" : {
+              "ANDROID" : {
+              },
+              "IPHONE" : {
+              },
+              "WINDOWSPHONE" : {
+              }
+            },
+            "type" : "string",
             "required" : true
           }
         },
@@ -225,6 +200,31 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "admin.campaign.delete" : {
+      "path" : "campaign/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
       }
     }
   },
@@ -301,8 +301,6 @@
       }
     },
     "methods" : {
-      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign" : {
-      },
       "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.listCampaigns" : {
         "response" : {
           "$ref" : "CampaignCollection"
@@ -313,9 +311,9 @@
           "$ref" : "JsonMap"
         }
       },
-      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForPlatform" : {
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getCampaign" : {
         "response" : {
-          "$ref" : "JsonMap"
+          "$ref" : "Campaign"
         }
       },
       "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.updateCampaing" : {
@@ -323,9 +321,9 @@
           "$ref" : "CampaignApiDO"
         }
       },
-      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getCampaign" : {
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForPlatform" : {
         "response" : {
-          "$ref" : "Campaign"
+          "$ref" : "JsonMap"
         }
       },
       "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.newCampaign" : {
@@ -335,6 +333,8 @@
         "response" : {
           "$ref" : "JsonMap"
         }
+      },
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign" : {
       }
     }
   }
