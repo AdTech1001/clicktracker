@@ -3,12 +3,14 @@ Click Tracker API is an application for tracking mobile client clicks for variou
 
 There are two API endpoints:
   - Admin API: used by admins for campaign management and click analytics,
-  - *User API*: endpoint for user clicks.
+  - User API: endpoint for user clicks.
 
 ## Demo
 A working demo project is deployed on GAE. API explorer is available on https://clicktracker-mb.appspot.com/_ah/api/explorer
 
-When invoking calls always use **Execute without OAuth**. Use the *apiKey* property to authenticate. apiKey: dog2dog 
+When invoking calls always use **Execute without OAuth**. Use the *apiKey* property to authenticate. apiKey: dog2dog
+
+Device platforms used in calls: ANDROID, IPHONE, WINDOWSPHONE
   
 ## Deploying to App Engine
 Edit *pom.xml* and configure the `app.id` property. From project root run:
@@ -23,13 +25,19 @@ Test the deployment with the API explorer: `https://<your-google-app-id>.appspot
 Prerequisites:
 - JDK 7
 - [Maven 3](http://maven.apache.org) or greater
-- If you want to use *Eclipse*:
-  - Install [M2Eclipse plugin](http://www.eclipse.org/m2e/m2e-downloads.html)
-  - Import project. For source select *Maven->Existing Maven projects*
-  - To run the project from Eclipse use *Run as->Maven build*
-  - Access the API locally: http://localhost:8080/_ah/api/explorer
-- *Maven* commands:
-  - Build: mvn package
-  - Run development server: `appengine:devserver`
+- If you want to use Eclipse:
+  - Install [M2Eclipse plugin](http://www.eclipse.org/m2e/m2e-downloads.html).
+  - Import project. For source select *Maven->Existing Maven projects*.
+  - To run the project from Eclipse use *Run as->Maven build*. Use *appengine:devserver* as the goal.
+  - Access the API locally: http://localhost:8080/_ah/api/explorer.
+- Using just Maven from the command line:
+  - Build:
+  ```
+  mvn package
+  ```
+  - Run development server:
+  ```
+  appengine:devserver
+  ```
 
 Unit tests are included in the main project in src/test.
