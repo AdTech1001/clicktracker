@@ -48,7 +48,7 @@ public class ClickTrackerApi {
 	public Properties sendClick(HttpServletRequest request, 
 			@Named("campaignId") long campaignId, 
 			@Named("platform") Platform platform) throws InternalServerErrorException {
-		
+
 		try {
 			return SingleRestResult.Get("href", campaignManager.sendClick(campaignId, platform));
 		}

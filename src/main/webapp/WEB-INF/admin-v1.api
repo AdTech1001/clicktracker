@@ -59,6 +59,78 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "admin.campaign.delete" : {
+      "path" : "campaign/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "admin.campaign.new" : {
+      "path" : "campaign",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.newCampaign",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "admin.campaign.get" : {
+      "path" : "campaign/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getCampaign",
+      "request" : {
+        "parameters" : {
+          "apiKey" : {
+            "type" : "string",
+            "required" : true
+          },
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "admin.campaignPlatformClicks.get" : {
       "path" : "clicks/campaign/{id}/platform/{platform}",
       "httpMethod" : "GET",
@@ -87,31 +159,6 @@
               }
             },
             "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "admin.campaign.get" : {
-      "path" : "campaign/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getCampaign",
-      "request" : {
-        "parameters" : {
-          "apiKey" : {
-            "type" : "string",
-            "required" : true
-          },
-          "id" : {
-            "type" : "int64",
             "required" : true
           }
         },
@@ -179,53 +226,6 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-    },
-    "admin.campaign.new" : {
-      "path" : "campaign",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.newCampaign",
-      "request" : {
-        "parameters" : {
-          "apiKey" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "admin.campaign.delete" : {
-      "path" : "campaign/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign",
-      "request" : {
-        "parameters" : {
-          "apiKey" : {
-            "type" : "string",
-            "required" : true
-          },
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
     }
   },
   "descriptor" : {
@@ -277,10 +277,6 @@
           }
         }
       },
-      "JsonMap" : {
-        "id" : "JsonMap",
-        "type" : "object"
-      },
       "CampaignApiDO" : {
         "id" : "CampaignApiDO",
         "type" : "object",
@@ -298,6 +294,10 @@
             "type" : "string"
           }
         }
+      },
+      "JsonMap" : {
+        "id" : "JsonMap",
+        "type" : "object"
       }
     },
     "methods" : {
@@ -306,7 +306,12 @@
           "$ref" : "CampaignCollection"
         }
       },
-      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForCampaignOnPlatform" : {
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign" : {
+      },
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.newCampaign" : {
+        "request" : {
+          "$ref" : "CampaignApiDO"
+        },
         "response" : {
           "$ref" : "JsonMap"
         }
@@ -314,6 +319,11 @@
       "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getCampaign" : {
         "response" : {
           "$ref" : "Campaign"
+        }
+      },
+      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.getNumberOfClicksForCampaignOnPlatform" : {
+        "response" : {
+          "$ref" : "JsonMap"
         }
       },
       "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.updateCampaing" : {
@@ -325,16 +335,6 @@
         "response" : {
           "$ref" : "JsonMap"
         }
-      },
-      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.newCampaign" : {
-        "request" : {
-          "$ref" : "CampaignApiDO"
-        },
-        "response" : {
-          "$ref" : "JsonMap"
-        }
-      },
-      "com.outfit7.mb.clicktracker.api.ClickTrackerAdminApi.deleteCampaign" : {
       }
     }
   }
